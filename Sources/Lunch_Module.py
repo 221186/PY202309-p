@@ -58,13 +58,31 @@ class Lunch: # Lunch라는 클래스를 만들고 각각의 메소드에 self를
                     break
             else: # 예산을 입력할 때 숫자가 아니라면 출력한다.
                 print('숫자를 입력하세요.')
-            
+        
 
-    # 사용자 리뷰 입력 함수
-    def write_review(self): 
-        review = input("식당에 대한 리뷰를 작성하시겠습니까? (Y/N): ").lower() # 사용자에게 리뷰를 작성할건지에 대해 물어본다.
-        if review == "y": # 만약 작성한다면(Y) 리뷰를 작성하고 review_text 변수에 저장한다.
-            review_text = input("리뷰를 작성해주세요: ")
-            return review_text 
-        else: # 작성 하지 않으면(N) 그냥 return문을 반환한다.
-            return "사용자가 리뷰를 작성하지 않았습니다."
+    # 사용자의 리뷰를 저장하고 분석하는 함수
+    def track_user_preferences(self, file_name, review, selected_menu):
+        fp_append = open(file_name, 'a', encoding='utf8') # 파일을 사용자가 작성한 리뷰와 메뉴를 추가할 수 있도록 한다.
+        fp_append.write(f"Menu: {selected_menu['name']}, Review: {review}\n")
+        return fp_append
+
+    # 과거 선호도에 기반하여 메뉴를 추천하는 함수
+    def recommend_menu_based_on_preferences(self, file_name):
+        try:
+            # 사용자의 이전 메뉴 선택과 리뷰를 읽어온다
+            fp_read = open(file_name, 'r', encoding='utf8') # 파일을 읽기 모드로 불러온다.
+            lines = fp_read.readlines()
+            # 파일의 각 줄에서 'Menu' 부분에 해당하는 음식을 골라내 menu_preferences에 리스트 형태로 추가한다.
+            menu_preference = [line.strip().split(': ')[1].split(', ')[0] for line in lines if line.startswith('Menu')] 
+
+            if not menu_preference: # 만약 메뉴가 아무것도 없다면 출력한다.
+                print('사용자의 이전 메뉴 선택 기록이 없습니다.')
+                return None
+            
+            random_menu = random.choice(menu_preference) # menu_preference에 저장된 메뉴들 중 랜덤하게 하나를 불러온다.
+            return random_menu
+                
+        except FileNotFoundError: 
+            print('파일이 없습니다.')  # 파일이 없는 경우 예외처리이다.
+        
+            

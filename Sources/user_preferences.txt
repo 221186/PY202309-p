@@ -1,0 +1,7 @@
+Menu: 돈까스, Review: 돈까스가 엄청 바삭해요!
+Menu: 피자, Review: 피자에 치즈가 엄청나요!
+Menu: 햄버거, Review: 브리또가 너무 좋아요
+Menu: 파스타, Review: 파스트 면이 알맞게 익었어요
+Menu: 김치찌개, Review: 비빔밥이 싸고 맛있어요.
+Menu: 짜장면, Review: 탕수육이 바삭하고 맛있어요!
+Menu: 김치찌개, Review: 김치찌개가 얼큰해요
