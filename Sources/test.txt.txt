@@ -1,22 +1,2 @@
 221186 
-def recommend_menu_based_on_preferences(self):
-        user_preferences = []
-        try:
-            # 사용자의 이전 메뉴 선택과 리뷰를 읽어온다
-            fp_read = open('user_preferences.txt', 'r', encoding='utf8')
-            lines = fp_read.readlines()
-            # 파일의 각 줄에서 메뉴 부분을 찾아 user_preferences 리스트에 추가합니다.
-            for line in lines:
-                menu_name = line.strip().split(':')[1].strip()  # 파일에서 메뉴를 추출하는 예시입니다.
-                user_preferences.append(menu_name)
-
-            if not user_preferences:
-                print('사용자의 이전 메뉴 선택 기록이 없습니다.')
-                return None
-
-            random_menu = random.choice(user_preferences)
-            return random_menu
-                
-        except FileNotFoundError:
-            print('파일이 없습니다.')  # 파일이 없는 경우 예외처리
-        
+ 
