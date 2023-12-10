@@ -17,13 +17,14 @@ if __name__ == '__main__': # 현재 스크립트 파일이 직접 실행될 때�
     # 무작위로 뽑힌 메뉴의 이름과 가격, 칼로리를 출력한다.
     print(f"예산 맞춤 추천 메뉴: {selected_menu_by_budget['name']} (가격: {selected_menu_by_budget['price']}원, 칼로리: {selected_menu_by_budget['calories']}kcal)")
 
-    review = input("새로운 리뷰를 작성하시겠습니까? (Y/N): ").lower() # 사용자에게 리뷰 작성여부를 물어본다.
+    recommended_menu = Lunch_instance.recommend_menu_based_on_preferences('user_preferences.txt')
+    if recommended_menu is not None: # 과거 사용자의 리뷰를 기반해서 메뉴를 랜덤하게 하나 추천한다.
+            print(f"과거 사용자 리뷰 기반 추천 메뉴: {recommended_menu}")
+    
+    review = input("식당과 음식에 대한 리뷰를 작성하시겠습니까? (Y/N): ").lower() # 사용자에게 리뷰 작성여부를 물어본다.
     if review == "y":
         new_review_text = input("리뷰를 작성해주세요: ")
-        Lunch_instance.track_user_preferences('user_preferences.txt', new_review_text, selected_menu)
-        recommended_menu = Lunch_instance.recommend_menu_based_on_preferences('user_preferences.txt')
-        if recommended_menu is not None:
-            print(f"과거 사용자 리뷰 기반 추천 메뉴: {recommended_menu}")
+        Lunch_instance.track_user_preferences('user_preferences.txt', new_review_text, selected_menu) # 리뷰와 메뉴를 저장한다.
     else:
-        print("사용자가 새로운 리뷰를 작성하지 않았습니다.")
+        print("사용자가 리뷰를 작성하지 않았습니다.")
     

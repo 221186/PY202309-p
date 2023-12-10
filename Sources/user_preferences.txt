@@ -5,3 +5,4 @@ Menu: 파스타, Review: 파스트 면이 알맞게 익었어요
 Menu: 김치찌개, Review: 비빔밥이 싸고 맛있어요.
 Menu: 짜장면, Review: 탕수육이 바삭하고 맛있어요!
 Menu: 김치찌개, Review: 김치찌개가 얼큰해요
+Menu: 짜장면, Review: 음식은 맛있지만 서비스가 별로에요!
