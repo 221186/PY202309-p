@@ -61,9 +61,9 @@ class Lunch: # Lunch라는 클래스를 만들고 각각의 메소드에 self를
         
 
     # 사용자의 리뷰를 저장하고 분석하는 함수
-    def track_user_preferences(self, file_name, review, selected_menu):
+    def track_user_preferences(self, file_name, review, user_choice):
         fp_append = open(file_name, 'a', encoding='utf8') # 파일을 사용자가 작성한 리뷰와 메뉴를 추가할 수 있도록 한다.
-        fp_append.write(f"Menu: {selected_menu['name']}, Review: {review}\n")
+        fp_append.write(f"Menu: {user_choice}, Review: {review}\n")
         return fp_append
 
     # 과거 선호도에 기반하여 메뉴를 추천하는 함수
@@ -76,11 +76,12 @@ class Lunch: # Lunch라는 클래스를 만들고 각각의 메소드에 self를
             menu_preference = [line.strip().split(': ')[1].split(', ')[0] for line in lines if line.startswith('Menu')] 
 
             if not menu_preference: # 만약 메뉴가 아무것도 없다면 출력한다.
-                print('사용자의 이전 메뉴 선택 기록이 없습니다.')
+                print('사용자님의 이전 메뉴 선택 기록이 없습니다.')
                 return None
             
-            random_menu = random.choice(menu_preference) # menu_preference에 저장된 메뉴들 중 랜덤하게 하나를 불러온다.
-            return random_menu
+            else:
+                random_menu = random.choice(menu_preference) # menu_preference에 저장된 메뉴들 중 랜덤하게 하나를 불러온다.
+                return random_menu
                 
         except FileNotFoundError: 
             print('파일이 없습니다.')  # 파일이 없는 경우 예외처리이다.
