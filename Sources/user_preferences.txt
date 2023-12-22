@@ -8,3 +8,8 @@ Menu: 김치찌개, Review: 김치찌개가 얼큰해요
 Menu: 짜장면, Review: 음식은 맛있지만 서비스가 별로에요!
 Menu: 짜장면, Review: 짜장면의 소스가 너무 짜지않아서 좋았어요
 Menu: 마라탕, Review: 마라탕은 식감을 다양하게 즐길 수 있어서 좋아요!!
+Menu: 핫도그, Review: 핫도그가 맛있네요!
+Menu: 돈까스, Review: 돈까스가 굉장히 커요!
+Menu: 피자, Review: 피자에 치즈가 많아서 좋아
+Menu: 볶음밥, Review: 볶음밥이 양이 너무 많아요 ㅠㅠ
+Menu: 칼국수, Review: 비도오고 날씨도 쌀쌀했는데  칼국수를 먹기 잘했어요!

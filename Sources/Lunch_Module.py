@@ -1,5 +1,6 @@
 import random
-
+import pandas as pd
+ 
 class Lunch: # Lunch라는 클래스를 만들고 각각의 메소드에 self를 넣어 해당 클래스의 인스턴스를 가르키는 역할을 한다.
    
     # 파일에서 식당 정보를 읽어오는 함수
@@ -85,5 +86,34 @@ class Lunch: # Lunch라는 클래스를 만들고 각각의 메소드에 self를
                 
         except FileNotFoundError: 
             print('파일이 없습니다.')  # 파일이 없는 경우 예외처리이다.
+
+    
+    def count_menu_preferences(self, file_name):
+        try:
+            with open(file_name, 'r', encoding='utf8') as fp_read: # 사용자의 리뷰를 불러온다.
+                lines = fp_read.readlines()
+                menu_preferences = [line.strip().split(': ')[1].split(',')[0] for line in lines if line.startswith('Menu')] # 리뷰 중에서도 실제 리뷰를 제외한 메뉴만 리스트로 저장한다.
+
+                if not menu_preferences:
+                    print('사용자의 이전 메뉴 선택 기록이 없습니다.')
+                    return None
+
+                # 메뉴별로 먹은 횟수를 카운트
+                menu_counter = {} # 메뉴별로 개수를 카운트한다.
+                for menu in menu_preferences:
+                    if menu in menu_counter:
+                        menu_counter[menu] += 1
+                    else:
+                        menu_counter[menu] = 1
+
+                # DataFrame 생성하고 메뉴 빈도로 정렬
+                df = pd.DataFrame(menu_counter.items(), columns=['Menu', 'Count']) # pandas 데이터프레임을 통해 메뉴와 개수 표를 만든다.
+                sorted_df = df.sort_values(by='Count', ascending=False) # 개수가 가장 많은 것부터 정렬한다.
+                return sorted_df
+
+        except FileNotFoundError:
+            print('파일이 없습니다.')
+            return None
+
         
             
